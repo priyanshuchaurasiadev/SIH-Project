@@ -1,2 +1,136 @@
 # SIH Project
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriQueue — Farmer Procurement Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast-wrap"></div>
+
+<header>
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C7 2 3 6 3 11c0 4.5 3.5 8.5 8 10.9C15.5 19.5 19 15.5 19 11c0-5-4-9-7-9z" fill="#2D6A4F"/>
+      <path d="M12 6.5c-1.8 1.6-2.8 3.5-2.8 5.6 0 1.6.6 3 1.6 4" stroke="#C8862F" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div>
+      <div class="brand-name">AgriQueue</div>
+      <div class="brand-sub">Farmer procurement, without the wait</div>
+    </div>
+  </div>
+  <nav id="tabs">
+    <button data-tab="register" class="active">1. Register</button>
+    <button data-tab="book" disabled>2. Book a Slot</button>
+    <button data-tab="queue" disabled>3. Queue Status</button>
+    <button data-tab="track" disabled>4. Track Payment</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ REGISTER ============ -->
+  <section class="panel active" id="panel-register">
+    <h1>Register as a farmer</h1>
+    <p class="lede">One-time registration with your basic details. This unlocks slot booking at any procurement centre near you.</p>
+    <div class="card">
+      <form id="form-register">
+        <div class="grid2">
+          <div class="field">
+            <label for="reg-name">Full name</label>
+            <input id="reg-name" required placeholder="e.g. Ram Bahadur Yadav">
+          </div>
+          <div class="field">
+            <label for="reg-phone">Mobile number</label>
+            <input id="reg-phone" required inputmode="numeric" maxlength="10" placeholder="10-digit number">
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="reg-village">Village / district</label>
+            <input id="reg-village" required placeholder="e.g. Chunar, Mirzapur">
+          </div>
+          <div class="field">
+            <label for="reg-land">Land holding (acres)</label>
+            <input id="reg-land" type="number" min="0.1" step="0.1" required placeholder="e.g. 2.5">
+          </div>
+        </div>
+        <div class="field">
+          <label for="reg-crop">Primary produce</label>
+          <select id="reg-crop" required>
+            <option value="">Select produce</option>
+            <option>Wheat</option>
+            <option>Paddy (Rice)</option>
+            <option>Maize</option>
+            <option>Mustard</option>
+            <option>Sugarcane</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Register &amp; continue</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ BOOK SLOT ============ -->
+  <section class="panel" id="panel-book">
+    <h1>Book a procurement slot</h1>
+    <p class="lede">Choose your nearest centre and a convenient time. You'll get a token number and an SMS confirmation.</p>
+    <div class="card">
+      <form id="form-book">
+        <div class="field">
+          <label for="book-centre">Procurement centre</label>
+          <select id="book-centre" required>
+            <option value="">Select centre</option>
+            <option>Chunar Mandi Procurement Centre</option>
+            <option>Vindhyachal PDS Centre</option>
+            <option>Ahraura Krishi Upaj Kendra</option>
+            <option>Lalganj Government Procurement Centre</option>
+          </select>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="book-date">Date</label>
+            <input id="book-date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="book-slot">Time slot</label>
+            <select id="book-slot" required>
+              <option value="">Select slot</option>
+              <option>6:00 AM – 9:00 AM</option>
+              <option>9:00 AM – 12:00 PM</option>
+              <option>12:00 PM – 3:00 PM</option>
+              <option>3:00 PM – 6:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Confirm booking</button>
+      </form>
+    </div>
+  </section>
+  <!-- ============ QUEUE STATUS ============ -->
+  <section class="panel" id="panel-queue">
+    <h1>Your queue status</h1>
+    <p class="lede">Live updates from your procurement centre — no need to stand in line until your turn is close.</p>
+    <div id="queue-content"></div>
+  </section>
+
+  <!-- ============ TRACK PAYMENT ============ -->
+  <section class="panel" id="panel-track">
+    <h1>Track procurement &amp; payment</h1>
+    <p class="lede">Follow your produce from weighment to payment credit.</p>
+    <div id="track-content"></div>
+  </section>
+
+  <div class="foot-note">
+    Demo data only, stored in this browser. <button class="reset-link" id="reset-btn">Reset demo</button>
+  </div>
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
